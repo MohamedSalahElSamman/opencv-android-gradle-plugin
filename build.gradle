@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
+    id 'com.gradle.plugin-publish' version '0.10.0'
+}
+
+
+
+gradlePlugin {
+    plugins {
+        androidOpenCv {
+            displayName = 'OpenCV Android Gradle Plugin'
+            description = 'A gradle plugin to add opencv binaries to android projects with ease.'
+
+            id = 'com.github.mosamman.opencvgradle'
+            version = '0.0.1'
+
+            implementationClass = 'com.github.mosamman.opencvgradle.AndroidOpenCV'
+        }
+    }
+}
+
+
+pluginBundle {
+    website = 'https://github.com/mosamman/opencv-gradle'
+    vcsUrl = 'https://github.com/mosamman/opencv-gradle'
+    tags = ['opencv', 'abdroid']
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+}
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
+
+    implementation "org.koin:koin-core:2.0.1"
+    implementation "org.koin:koin-core-ext:2.0.1"
+
+    implementation "com.squareup.retrofit2:retrofit:2.6.1"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.1"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.1.0"
+
+    implementation 'org.apache.commons:commons-compress:1.19'
+
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = sourceCompatibility
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = sourceCompatibility
+    }
+}
