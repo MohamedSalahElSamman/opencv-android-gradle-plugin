@@ -1,1 +1,1 @@
-# opencv-android-gradle-plugin
+# OpenCV Android Gradle Plugin
